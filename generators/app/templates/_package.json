@@ -1,0 +1,61 @@
+{
+  "name": "<%= name %>",
+  "description": "<%= description %>",
+  "version": "<%= version %>",
+  "homepage": "<%= repositoryUrl %>",
+  "bugs": "<%= repositoryUrl %>/issues",
+  "author": {
+    "name": "<%= authorName %>",
+    "email": "<%= authorEmail %>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "<%= repositoryUrl %>"
+  },
+  "dependencies": {
+    <% if (swf) { %>
+    "aws-sdk": "*",
+    "aws-swf": "*",
+    "usher": "*",
+    <% } %>
+    <% if (apps) { %>
+    "baucis": "*",
+    "baucis-vivify": "*",
+    "body-parser": "*",
+    "express-validator": "*",
+    "compression": "*",
+    "cors": "*",
+    "passport": "*",
+    "passport-http-bearer": "*",
+    "request": "*",
+    "winston-request-logger": "*",
+    <% } %>
+    <% if (mongo) { %>
+    "mongoose": "*",
+    "mongoose-timestamp": "*",
+    <% } %>
+    "async": "*",
+    "colors": "*",
+    "di": "2.0.0-pre-14",
+    "discover-client": "*",
+    "express": "*",
+    "helmet": "*",
+    "krypt": "*",
+    "lodash": "*",
+    "moment": "^2.10.3",
+    "nconf": "*",
+    "winston": "*",
+    "winston-gelfling": "*",
+    "analytics-node": "*"
+  },
+  "devDependencies": {
+    "errorhandler": "*",
+    "gulp": "*",
+    "gulp-jshint": "*",
+    "gulp-load-plugins": "*",
+    "gulp-plumber": "*",
+    "gulp-util": "*",
+    "jshint-stylish": "*",
+    "minimist": "*"
+  }
+}
