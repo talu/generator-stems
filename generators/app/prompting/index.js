@@ -19,14 +19,16 @@ module.exports = function prompting() {
 
   var prompts = [].concat(
     project,
+    apps,
     swf,
-    mongo,
-    apps
+    mongo
   );
 
-  this.prompt(prompts, function (props) {
-    this.config.set(props);
-    // To access props later use this.props.someOption;
+  this.prompt(prompts, function (answers) {
+    if (answers.publicApp || answers.privateApp) {
+      answers.mongo = true;
+    }
+    this.answers = answers;
     done();
   }.bind(this));
 };

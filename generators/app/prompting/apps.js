@@ -2,6 +2,16 @@
 
 module.exports = [{
   type: 'confirm',
+  name: 'publicApp',
+  message: 'Do you need a public app?',
+  default: true
+}, {
+  type: 'confirm',
+  name: 'privateApp',
+  message: 'Do you need a private app?',
+  default: true
+}/*, {
+  type: 'confirm',
   name: 'apps',
   message: 'Will this project have any apps?',
   default: true
@@ -45,4 +55,4 @@ module.exports = [{
   when: function (answers) {
     return answers.app3
   }
-}];
+}*/];

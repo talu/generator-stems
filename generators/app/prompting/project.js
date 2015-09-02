@@ -1,10 +1,12 @@
 'use strict';
 
+var path = require('path');
+
 module.exports = [{
   type: 'input',
   name: 'name',
   message: 'Project Name:',
-  default: 'MyProject'
+  default: path.basename(process.cwd())
 }, {
   type: 'input',
   name: 'description',

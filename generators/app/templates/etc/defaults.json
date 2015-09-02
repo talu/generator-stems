@@ -1,0 +1,54 @@
+{
+  <% if (answers.mongo) { %>
+  "mongodb": {
+    "url": "mongodb://127.0.0.1:27017/",
+    "options": {
+      "db": {
+        "w": "majority"
+      }
+    }
+  },
+  <% } %>
+  <% if (answers.swf) { %>
+  "aws": {
+    "accessKey": "",
+    "region": "us-west-1"
+  },
+  "swf": {
+    "domain": "",
+    "tasklist": "",
+    "workflows": {}
+  },
+  <% } %>
+  <% if (answers.publicApp) { %>
+  "public-app": {
+    "port": 8080,
+    "cors": {
+      "allowAll": true
+    }
+  },
+  <% } %>
+  <% if (answers.privateApp) { %>
+  "private-app": {
+    "port": 9090,
+    "cors": {
+      "allowAll": true
+    }
+  },
+  <% } %>
+  "logger": {
+    "graylog": {
+      "graylogHost": "",
+      "graylogPort": 12201
+    }
+  },
+  "secrets": {
+    "defaultKey": "SharedKey-1.0"
+  },
+  "segmentio": {
+    "writeKey": "",
+    "options": {
+      "flushAt": 1
+    }
+  }
+}

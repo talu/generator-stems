@@ -1,55 +1,59 @@
 {
-  "name": "<%= name %>",
-  "description": "<%= description %>",
-  "version": "<%= version %>",
-  "homepage": "<%= repositoryUrl %>",
-  "bugs": "<%= repositoryUrl %>/issues",
+  "name": "<%= answers.name %>",
+  "description": "<%= answers.description %>",
+  "version": "<%= answers.version %>",
+  "homepage": "<%= answers.repositoryUrl %>",
+  "bugs": "<%= answers.repositoryUrl %>/issues",
+  "main": "lib/index.js",
   "author": {
-    "name": "<%= authorName %>",
-    "email": "<%= authorEmail %>"
+    "name": "<%= answers.authorName %>",
+    "email": "<%= answers.authorEmail %>"
   },
   "repository": {
     "type": "git",
-    "url": "<%= repositoryUrl %>"
+    "url": "<%= answers.repositoryUrl %>"
   },
   "dependencies": {
-    <% if (swf) { %>
+    <% if (answers.swf) { %>
     "aws-sdk": "*",
     "aws-swf": "*",
     "usher": "*",
     <% } %>
-    <% if (apps) { %>
+    <% if (answers.publicApp || answers.privateApp) { %>
     "baucis": "*",
     "baucis-vivify": "*",
     "body-parser": "*",
-    "express-validator": "*",
     "compression": "*",
     "cors": "*",
+    "express": "*",
+    "express-validator": "*",
+    "helmet": "*",
     "passport": "*",
     "passport-http-bearer": "*",
     "request": "*",
+    "url": "*",
     "winston-request-logger": "*",
     <% } %>
-    <% if (mongo) { %>
+    <% if (answers.mongo) { %>
     "mongoose": "*",
     "mongoose-timestamp": "*",
     <% } %>
+    "analytics-node": "*",
     "async": "*",
     "colors": "*",
     "di": "2.0.0-pre-14",
     "discover-client": "*",
-    "express": "*",
-    "helmet": "*",
+    "errorhandler": "*",
+    "events": "*",
     "krypt": "*",
     "lodash": "*",
-    "moment": "^2.10.3",
+    "moment": "*",
     "nconf": "*",
+    "util": "*",
     "winston": "*",
-    "winston-gelfling": "*",
-    "analytics-node": "*"
+    "winston-gelfling": "*"
   },
   "devDependencies": {
-    "errorhandler": "*",
     "gulp": "*",
     "gulp-jshint": "*",
     "gulp-load-plugins": "*",

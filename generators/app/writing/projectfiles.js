@@ -1,7 +1,11 @@
 'use strict';
 
 module.exports = function writingProjectfiles() {
-  var config = this.config.getAll();
-  this.template('editorconfig', '.editorconfig', config);
-  this.template('jshintrc', '.jshintrc', config);
+
+  // Direct copy of files
+  this.copy('editorconfig', '.editorconfig');
+  this.copy('jshintrc', '.jshintrc');
+
+  // Copy files with template rendering and conflict management. Source path to destination path
+  this.template('_package.json', 'package.json');
 };
