@@ -8,14 +8,14 @@
 
 var di = require('di'),
     express = require('express'),
-    Logger = require('../../../common/logger');
+    Logger = require('stems/services/logger');
 
 
-var WhoAmI = function WhoAmI(logger) {
+var WhoAmI = function WhoAmI(/*logger*/) {
 
   var router = express.Router();
 
-  router.get('/', function (req, res) {
+  router.get('/', function (/*req, res*/) {
 
   });
 

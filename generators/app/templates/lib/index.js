@@ -1,7 +1,7 @@
 'use strict';
 
 var di = require('di'),
-  colors = require('colors/safe'),
+  asciify = require('asciify'),
   <% if (answers.mongo) { %>
   Models = require('./models'),
   <% } %>
@@ -14,8 +14,8 @@ var di = require('di'),
   <% if (answers.swf) { %>
   Workflows = require('./workflows'),
   <% } %>
-  Logger = require('./common/logger'),
-  Health = require('./common/health');
+  Logger = require('stems/services/logger'),
+  Health = require('stems/services/health');
 
 
 /**
@@ -66,7 +66,7 @@ Main.prototype.commandline = false;
 
 // Set online
 Main.prototype.setOnline = function () {
-  if (!this.health.online) {
+  if (!this.online) {
     this.logger.log('info', '<%= answers.name %> is now online');
 
     <% if (answers.publicApp) { %>
@@ -83,12 +83,14 @@ Main.prototype.setOnline = function () {
     // Start the workflows
     this.workflows.start();
     <% } %>
+
+    this.online = true;
   }
 };
 
 // Set offline
 Main.prototype.setOffline = function () {
-  if (this.health.online) {
+  if (this.online) {
     this.logger.log('warn', '<%= answers.name %> is going offline');
 
     <% if (answers.publicApp) { %>
@@ -105,6 +107,8 @@ Main.prototype.setOffline = function () {
     // Stop the workflows
     this.workflows.stop();
     <% } %>
+
+    this.online = false;
   }
 };
 
@@ -121,23 +125,6 @@ Main.prototype.start = function (done) {
     // Stop listening when we are offline
     this.health.on('offline', this.setOffline.bind(this));
 
-    if (this.commandline) {
-
-      // Shutdown handler
-      process.on('SIGINT', function () {
-        self.logger.log('info', 'Got SIGINT! Stopping all service, please wait...');
-
-        // Shutdown the app
-        self.stop();
-
-        // This should be on an event from poller
-        setTimeout(function () {
-          process.exit();
-        }, 1000);
-
-      });
-    }
-
     // Start the application for the first time
     this.setOnline();
 
@@ -151,6 +138,8 @@ Main.prototype.start = function (done) {
 
   <% if (answers.mongo) { %>
   this.health.mongoose.connection.on('open', done);
+  <% } else { %>
+  done();
   <% } %>
 };
 
@@ -181,14 +170,32 @@ di.annotate(Main, new di.Inject(
 if (require.main === module) {
   (function () {
 
-    console.log(colors.cyan('**** <%= answers.name %> ****'));
+    function shutdownMain() {
+      main.logger.log('info', 'Got SIGINT! Stopping all service, please wait...');
+
+      // Shutdown the app
+      main.stop();
+
+      // This should be on an event from poller
+      setTimeout(function () {
+        process.exit();
+      }, 1000);
+    }
 
     var
       injector = new di.Injector([]),
       main = injector.get(Main);
 
     main.commandline = true;
-    main.start();
+
+    // Shutdown handler
+    process.on('SIGTERM', shutdownMain);
+    process.on('SIGINT', shutdownMain);
+
+    asciify('<%= answers.name %>', { color: 'cyan', font: 'larry3d' }, function (err, res) {
+      console.log(res);
+      main.start();
+    });
 
   }());
 }

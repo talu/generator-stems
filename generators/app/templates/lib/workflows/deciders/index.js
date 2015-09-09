@@ -2,7 +2,7 @@
 
 
 var di = require('di'),
-  Aws = require('../../common/aws');
+  Aws = require('stems/services/aws');
 
 
 function Deciders(aws) {

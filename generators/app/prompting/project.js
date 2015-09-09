@@ -16,7 +16,7 @@ module.exports = [{
   type: 'input',
   name: 'version',
   message: 'Version:',
-  default: '0.0.1'
+  default: '1.0.0'
 }, {
   type: 'input',
   name: 'repositoryUrl',

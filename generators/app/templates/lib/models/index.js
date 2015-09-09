@@ -2,10 +2,10 @@
 
 
 var di = require('di'),
-  Mongoose = require('../common/mongoose');
+  Mongoose = require('stems/services/mongoose');
 
 
-var Models = function Models(mongoose) {};
+var Models = function Models(/*mongoose*/) {};
 
 
 // Setup dependencies

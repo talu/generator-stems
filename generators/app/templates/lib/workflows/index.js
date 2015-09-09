@@ -2,7 +2,7 @@
 
 
 var di = require('di'),
-  Logger = require('../common/logger'),
+  Logger = require('stems/services/logger'),
   Deciders = require('./deciders'),
   Activities = require('./activities');
 

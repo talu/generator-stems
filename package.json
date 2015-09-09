@@ -1,13 +1,13 @@
 {
-  "name": "generator-node-microservice",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
+  "name": "generator-stems",
+  "version": "1.0.0",
+  "description": "A Yeoman generator used to bootstrap Node.js micro-services",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "rdpacheco/generator-node-microservice",
+  "repository": "talu/generator-stems",
   "author": {
-    "name": "",
-    "email": "",
+    "name": "Roman Pacheco",
+    "email": "rdpacheco+github@gmail.com",
     "url": "https://github.com/rdpacheco"
   },
   "scripts": {

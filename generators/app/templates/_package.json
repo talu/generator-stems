@@ -1,5 +1,5 @@
 {
-  "name": "<%= answers.name %>",
+  "name": "<%= answers.nameSlug %>",
   "description": "<%= answers.description %>",
   "version": "<%= answers.version %>",
   "homepage": "<%= answers.repositoryUrl %>",
@@ -39,8 +39,8 @@
     "mongoose-timestamp": "*",
     <% } %>
     "analytics-node": "*",
+    "asciify": "*",
     "async": "*",
-    "colors": "*",
     "di": "2.0.0-pre-14",
     "discover-client": "*",
     "errorhandler": "*",
@@ -48,18 +48,25 @@
     "krypt": "*",
     "lodash": "*",
     "moment": "*",
+    "stems": "git://github.com/talu/stems.git",
     "nconf": "*",
     "util": "*",
     "winston": "*",
     "winston-gelfling": "*"
   },
   "devDependencies": {
+    "chai": "*",
+    "coveralls": "*",
     "gulp": "*",
+    "gulp-istanbul": "*",
     "gulp-jshint": "*",
     "gulp-load-plugins": "*",
+    "gulp-mocha": "*",
     "gulp-plumber": "*",
     "gulp-util": "*",
     "jshint-stylish": "*",
-    "minimist": "*"
+    "minimist": "*",
+    "nock": "*",
+    "sinon": "*"
   }
 }

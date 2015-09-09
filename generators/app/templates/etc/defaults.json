@@ -46,7 +46,7 @@
     "defaultKey": "SharedKey-1.0"
   },
   "segmentio": {
-    "writeKey": "",
+    "writeKey": "xxxxxxxx",
     "options": {
       "flushAt": 1
     }

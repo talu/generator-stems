@@ -3,11 +3,12 @@
 var di = require('di'),
   util = require('util'),
   App = require('../app'),
-  Config = require('../../common/config'),
-  Logger = require('../../common/logger'),
-  Healthcheck = require('../../common/middleware/healthcheck'),
+  Config = require('stems/services/config'),
+  Logger = require('stems/services/logger'),
+  Healthcheck = require('stems/middleware/healthcheck'),
   Passport = require('./passport'),
-  PublicRoutes = require('./routes');
+  PublicRoutes = require('./routes'),
+  Segment = require('stems/services/segment');
 
 
 function PublicApp(config, logger, passport, routes, healthcheck) {
@@ -31,7 +32,7 @@ util.inherits(PublicApp, App);
 
 
 // Setup dependencies
-di.annotate(PublicApp, new di.Inject(Config, Logger, Passport, PublicRoutes, Healthcheck));
+di.annotate(PublicApp, new di.Inject(Config, Logger, Passport, PublicRoutes, Healthcheck, Segment));
 
 
 // Export our service

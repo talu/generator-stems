@@ -3,8 +3,8 @@
 
 var di = require('di'),
 //usher = require('usher'),
-  Config = require('../../common/config'),
-  Aws = require('../../common/aws');
+  Config = require('stems/services/config'),
+  Aws = require('stems/services/aws');
 
 
 function Activities(config, aws) {
