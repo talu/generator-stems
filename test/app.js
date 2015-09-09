@@ -44,11 +44,14 @@ describe('stems:app', function () {
 
   it('creates project files', function () {
     assert.file([
+      'Dockerfile',
+      'newrelic.js',
       'README.md',
       'gulpfile.js',
       'package.json',
       '.editorconfig',
-      '.jshintrc'
+      '.jshintrc',
+      '.travis.yml'
     ]);
   });
 

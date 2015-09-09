@@ -24,13 +24,14 @@ Finally, initiate the generator:
 ```bash
 yo stems
 ```
+
 ## Generator options
 
 Currently these are the options and their implications:
 
 + **Project Name**
   + Used for display purposes in logging and comments
-  + Converted to kebab-case, then used as the `name` field in `package.json`
+  + Converted to kebab-case, then used as the `name` field in `package.json` as well as the file path in `Dockerfile`
 + **Description**
   + Used as the `description` field in `package.json`
 + **Version**
@@ -52,3 +53,9 @@ Currently these are the options and their implications:
   + Sets up [MongoDB](https://www.mongodb.org/) access through Mongoose and default configurations
   + *Already included with Public and Private apps*
   + *MongoDB is not included*
+
+## Run tests
+
+```bash
+mocha
+```

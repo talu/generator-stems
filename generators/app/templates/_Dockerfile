@@ -1,0 +1,14 @@
+FROM node:latest
+
+RUN npm install -g gulp
+ADD package.json /opt/<%= answers.nameSlug %>/
+ADD npm-shrinkwrap.json /opt/<%= answers.nameSlug %>/
+RUN cd /opt/<%= answers.nameSlug %> && rm -rf ./node_modules && npm install
+ADD . /opt/<%= answers.nameSlug %>
+<% if (answers.publicApp) { %>
+EXPOSE<% if (answers.publicApp) { %> 8080<% } %><% if (answers.privateApp) { %> 9090<% } %>
+<% } %>
+WORKDIR /opt/<%= answers.nameSlug %>
+
+ENTRYPOINT ["node", "/opt/<%= answers.nameSlug %>/lib/index.js"]
+CMD ["--debug"]
