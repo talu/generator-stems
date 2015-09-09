@@ -1,4 +1,4 @@
-# Stems
+# Stems - Generator
 > A [Yeoman](http://yeoman.io/) generator used to bootstrap [Node.js](https://nodejs.org/en/) micro-services. 
 
 ## Install Yeoman
