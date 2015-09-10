@@ -18,7 +18,6 @@ describe('stems:app', function () {
 
   it('creates apps files', function () {
     assert.file([
-      'lib/apps/app.js',
       'lib/apps/public/index.js',
       'lib/apps/private/index.js'
     ]);
@@ -66,7 +65,6 @@ describe('stems:app', function () {
       'test/fixtures/index.js',
       'test/api/setup.js',
       'test/api/public/healthcheck.js',
-      'test/unit/services/workflows/workflow.js'
     ]);
   });
 
