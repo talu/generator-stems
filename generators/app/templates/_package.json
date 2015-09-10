@@ -21,18 +21,9 @@
     <% } %>
     <% if (answers.publicApp || answers.privateApp) { %>
     "baucis": "*",
-    "baucis-vivify": "*",
-    "body-parser": "*",
-    "compression": "*",
-    "cors": "*",
     "express": "*",
-    "express-validator": "*",
-    "helmet": "*",
     "passport": "*",
-    "passport-http-bearer": "*",
     "request": "*",
-    "url": "*",
-    "winston-request-logger": "*",
     <% } %>
     <% if (answers.mongo) { %>
     "mongoose": "*",
@@ -45,7 +36,6 @@
     "discover-client": "*",
     "errorhandler": "*",
     "events": "*",
-    "krypt": "*",
     "lodash": "*",
     "moment": "*",
     "stems": "*",

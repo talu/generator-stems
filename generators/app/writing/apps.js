@@ -2,10 +2,6 @@
 
 module.exports = function writingApp() {
 
-  if (this.answers.publicApp || this.answers.privateApp) {
-    this.template('lib/apps/app.js', 'lib/apps/app.js');
-  }
-
   if (this.answers.publicApp) {
     this.directory('lib/apps/public', 'lib/apps/public');
   }

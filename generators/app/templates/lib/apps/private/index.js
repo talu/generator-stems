@@ -2,7 +2,7 @@
 
 var di = require('di'),
   util = require('util'),
-  App = require('../app'),
+  App = require('stems/apps/app'),
   Config = require('stems/services/config'),
   Logger = require('stems/services/logger'),
   Healthcheck = require('stems/middleware/healthcheck'),
@@ -14,7 +14,7 @@ var di = require('di'),
 function PrivateApp(config, logger, passport, routes, healthcheck) {
 
   // Get our specific config
-  this.config = config.get('private-app');
+  this.config = config.get('privateApp');
 
   // Invoke our parent constructor
   PrivateApp.super_.apply(this, arguments);

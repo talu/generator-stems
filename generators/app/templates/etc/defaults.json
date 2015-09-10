@@ -21,7 +21,7 @@
   },
   <% } %>
   <% if (answers.publicApp) { %>
-  "public-app": {
+  "publicApp": {
     "port": 8080,
     "cors": {
       "allowAll": true
@@ -29,7 +29,7 @@
   },
   <% } %>
   <% if (answers.privateApp) { %>
-  "private-app": {
+  "privateApp": {
     "port": 9090,
     "cors": {
       "allowAll": true
@@ -42,8 +42,11 @@
       "graylogPort": 12201
     }
   },
-  "secrets": {
+  "krypt": {
     "defaultKey": "SharedKey-1.0"
+  },
+  "nconf": {
+    "encryptedEnv": "<%= answers.nameCaps %>_SECRET"
   },
   "segmentio": {
     "writeKey": "xxxxxxxx",

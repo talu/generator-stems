@@ -15,7 +15,7 @@ module.exports = function prompting() {
 
   // Have Yeoman greet the user.
   this.log(yosay(
-    'Welcome to the ' + chalk.red('Node Micro-Service') + ' generator!'
+    'Welcome to the ' + chalk.cyan('Node Micro-Service') + ' generator!'
   ));
 
   var prompts = [].concat(
@@ -29,6 +29,9 @@ module.exports = function prompting() {
 
     // Generate slug from name
     answers.nameSlug = kebabCase(answers.name);
+
+    // Generage all caps from name
+    answers.nameCaps = kebabCase(answers.name).replace(/\-/g, '_').toUpperCase();
 
     // Mongo is required in apps
     if (answers.publicApp || answers.privateApp) {
