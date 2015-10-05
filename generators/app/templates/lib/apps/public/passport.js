@@ -1,8 +1,3 @@
-/*!
- * Talu Payment Service
- * Copyright(c) 2015 meltmedia <mike@meltmedia.com>
- */
-
 'use strict';
 
 
