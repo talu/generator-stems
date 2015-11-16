@@ -16,6 +16,9 @@ Deciders.prototype.start = function start() {
 Deciders.prototype.stop = function stop() {
 };
 
+Deciders.prototype.execute = function execute() {
+};
+
 
 // Setup dependencies
 di.annotate(Deciders, new di.Inject(Aws));

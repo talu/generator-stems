@@ -7,8 +7,7 @@ var di = require('di'),
   Logger = require('stems/services/logger'),
   Healthcheck = require('stems/middleware/healthcheck'),
   Passport = require('./passport'),
-  PrivateRoutes = require('./routes'),
-  Segment = require('stems/services/segment');
+  PrivateRoutes = require('./routes');
 
 
 function PrivateApp(config, logger, passport, routes, healthcheck) {
@@ -32,7 +31,7 @@ util.inherits(PrivateApp, App);
 
 
 // Setup dependencies
-di.annotate(PrivateApp, new di.Inject(Config, Logger, Passport, PrivateRoutes, Healthcheck, Segment));
+di.annotate(PrivateApp, new di.Inject(Config, Logger, Passport, PrivateRoutes, Healthcheck));
 
 
 // Export our service

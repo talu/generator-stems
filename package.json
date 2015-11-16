@@ -1,6 +1,6 @@
 {
   "name": "generator-stems",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Yeoman generator used to bootstrap Node.js micro-services",
   "license": "MIT",
   "main": "app/index.js",
