@@ -2,26 +2,42 @@
 
 
 var di = require('di'),
-  Aws = require('stems/services/aws');
+    _ = require('lodash'),
+    Aws = require('stems/services/aws'),
+    ExampleWorkflow = require('./example-workflow');
 
 
-function Deciders(aws) {
-  // We need to ensure AWS is properly configures
-  this.aws = aws;
+function Deciders(exampleWorkflow) {
+  this.registry = [];
+
+  this.register(exampleWorkflow);
 }
 
-Deciders.prototype.start = function start() {
+
+Deciders.prototype.register = function register(workflow) {
+  this.registry.push(workflow);
 };
+
+
+Deciders.prototype.start = function start() {
+
+  // Start the deciders
+  _.each(this.registry, function (workflow) {
+    workflow.start();
+  });
+
+};
+
 
 Deciders.prototype.stop = function stop() {
-};
-
-Deciders.prototype.execute = function execute() {
+  _.each(this.registry, function (workflow) {
+    workflow.stop();
+  });
 };
 
 
 // Setup dependencies
-di.annotate(Deciders, new di.Inject(Aws));
+di.annotate(Deciders, new di.Inject(ExampleWorkflow, Aws));
 
 
 // Export our service

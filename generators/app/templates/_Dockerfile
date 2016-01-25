@@ -1,8 +1,7 @@
 FROM node:latest
 
-RUN npm install -g gulp
+RUN npm install -g pm2
 ADD package.json /opt/<%= answers.nameSlug %>/
-ADD npm-shrinkwrap.json /opt/<%= answers.nameSlug %>/
 RUN cd /opt/<%= answers.nameSlug %> && rm -rf ./node_modules && npm install
 ADD . /opt/<%= answers.nameSlug %>
 <% if (answers.publicApp) { %>
@@ -10,5 +9,5 @@ EXPOSE<% if (answers.publicApp) { %> 8080<% } %><% if (answers.privateApp) { %> 
 <% } %>
 WORKDIR /opt/<%= answers.nameSlug %>
 
-ENTRYPOINT ["node", "/opt/<%= answers.nameSlug %>/lib/index.js"]
-CMD ["--debug"]
+ENTRYPOINT ["/usr/local/bin/pm2"]
+CMD ["start --no-daemon lib/index.js -i 0 -n <%= answers.nameSlug %>"]

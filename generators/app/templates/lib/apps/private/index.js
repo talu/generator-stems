@@ -12,11 +12,18 @@ var di = require('di'),
 
 function PrivateApp(config, logger, passport, routes, healthcheck) {
 
+  // Save passport
+  this.passport = passport;
+
   // Get our specific config
   this.config = config.get('privateApp');
 
   // Invoke our parent constructor
   PrivateApp.super_.apply(this, arguments);
+
+  // Initialize passport
+  // Note: This must come after session cookie init
+  this.app.use(this.passport.initialize());
 
   // Healthcheck
   this.app.use('/healthcheck', healthcheck);

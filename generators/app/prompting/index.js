@@ -15,7 +15,7 @@ module.exports = function prompting() {
 
   // Have Yeoman greet the user.
   this.log(yosay(
-    'Welcome to the ' + chalk.cyan('Node Micro-Service') + ' generator!'
+    'Welcome to the ' + chalk.cyan('STEMS micro-service') + ' generator!'
   ));
 
   var prompts = [].concat(

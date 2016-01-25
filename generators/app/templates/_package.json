@@ -13,47 +13,38 @@
     "type": "git",
     "url": "<%= answers.repositoryUrl %>"
   },
+  "scripts": {
+    "start": "node lib/index.js",
+    "test": "node_modules/.bin/gulp test"
+  },
   "dependencies": {
-    <% if (answers.swf) { %>
-    "aws-sdk": "*",
-    "aws-swf": "*",
-    "usher": "*",
-    <% } %>
     <% if (answers.publicApp || answers.privateApp) { %>
-    "baucis": "*",
-    "express": "*",
     "passport": "*",
     "request": "*",
     <% } %>
     <% if (answers.mongo) { %>
-    "mongoose": "*",
     "mongoose-timestamp": "*",
+    "mongoose-unique-validator": "*",
     <% } %>
-    "analytics-node": "*",
     "asciify": "*",
     "async": "*",
     "di": "2.0.0-pre-14",
-    "discover-client": "*",
-    "errorhandler": "*",
-    "events": "*",
     "lodash": "*",
     "moment": "*",
-    "stems": "*",
-    "nconf": "*",
-    "util": "*",
-    "winston": "*",
-    "winston-gelfling": "*"
+    "stems": "*"
   },
   "devDependencies": {
     "chai": "*",
-    "coveralls": "*",
+    "chai-things": "*",
     "gulp": "*",
     "gulp-istanbul": "*",
     "gulp-jshint": "*",
     "gulp-load-plugins": "*",
+    "mongoose-test-utils": "*",
     "gulp-mocha": "*",
     "gulp-plumber": "*",
     "gulp-util": "*",
+    "jshint": "*",
     "jshint-stylish": "*",
     "minimist": "*",
     "nock": "*",

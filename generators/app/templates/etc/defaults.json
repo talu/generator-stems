@@ -1,4 +1,11 @@
 {
+  "statsd": {
+    "enabled": false,
+    "telegraf": true,
+    "globalTags": [
+      "app:<%= answers.nameSlug %>"
+    ]
+  },
   <% if (answers.mongo) { %>
   "mongodb": {
     "url": "mongodb://127.0.0.1:27017/",
@@ -16,8 +23,23 @@
   },
   "swf": {
     "domain": "",
-    "tasklist": "",
-    "workflows": {}
+    "activities": {
+      "tasklist": "",
+      "taskScheduleToCloseTimeout": "90",
+      "taskScheduleToStartTimeout": "30",
+      "taskStartToCloseTimeout": "60"
+    },
+    "workflows": {
+      "example": {
+        "enabled": false,
+        "name": "example-workflow",
+        "version": "1.0.0",
+        "tasklist": "example-workflow-tasklist",
+        "executionStartToCloseTimeout": "300",
+        "taskStartToCloseTimeout": "300",
+        "childPolicy": "TERMINATE"
+      }
+    }
   },
   <% } %>
   <% if (answers.publicApp) { %>
@@ -36,12 +58,6 @@
     }
   },
   <% } %>
-  "logger": {
-    "graylog": {
-      "graylogHost": "",
-      "graylogPort": 12201
-    }
-  },
   "krypt": {
     "defaultKey": "SharedKey-1.0"
   },
@@ -49,7 +65,7 @@
     "encryptedEnv": "<%= answers.nameCaps %>_SECRET"
   },
   "segmentio": {
-    "writeKey": "xxxxxxxx",
+    "writeKey": "",
     "options": {
       "flushAt": 1
     }

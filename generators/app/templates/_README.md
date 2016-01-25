@@ -1,13 +1,8 @@
 # <%= answers.name %>
-> <%= answers.description %> 
+> <%= answers.description %>
 
-## Install gulp
 
-```bash
-npm install -g gulp
-```
-
-## Install <%= answers.name %>
+## Install dependencies
 
 ```bash
 npm install
@@ -16,12 +11,11 @@ npm install
 ## Run service
 
 ```bash
-node lib/index.js
+npm start
 ```
 
 ## Run tests
 
 ```bash
-gulp test
+npm test
 ```
-   

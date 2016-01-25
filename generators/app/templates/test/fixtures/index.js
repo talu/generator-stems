@@ -6,5 +6,6 @@ var
 
 module.exports = _.assign({
   Service: require('../../lib'),
+  DataImporter: require('./data-importer'),
   data: require('./data')
 }, fixtures);

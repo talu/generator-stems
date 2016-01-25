@@ -4,6 +4,7 @@ module.exports = function writingApp() {
 
   this.directory('test/fixtures', 'test/fixtures');
   this.directory('test/integration', 'test/integration');
+  this.directory('test/unit', 'test/unit');
 
   if (this.answers.publicApp || this.answers.privateApp) {
     this.template('test/api/setup.js', 'test/api/setup.js');
@@ -18,6 +19,6 @@ module.exports = function writingApp() {
   }
 
   if (this.answers.swf) {
-    this.directory('test/unit/services/workflows', 'test/unit/services/workflows');
+    this.directory('test/unit/workflows/activities', 'test/unit/workflows/activities');
   }
 };

@@ -6,12 +6,15 @@ var di = require('di'),
   Config = require('stems/services/config'),
   Logger = require('stems/services/logger'),
   Healthcheck = require('stems/middleware/healthcheck'),
-  Datadog = require('stems/services/datadog'),
+  Metrics = require('stems/services/metrics'),
   Passport = require('./passport'),
   PublicRoutes = require('./routes');
 
 
-function PublicApp(config, logger, passport, routes, healthcheck, datadog) {
+function PublicApp(config, logger, passport, routes, healthcheck, metrics) {
+
+  // Save passport
+  this.passport = passport;
 
   // Get our specific config
   this.config = config.get('publicApp');
@@ -19,8 +22,15 @@ function PublicApp(config, logger, passport, routes, healthcheck, datadog) {
   // Invoke our parent constructor
   PublicApp.super_.apply(this, arguments);
 
+  // trust first proxy
+  this.app.set('trust proxy', 1);
+
+  // Initialize passport
+  // Note: This must come after session cookie init
+  this.app.use(this.passport.initialize());
+
   // Wire in datadog statsd logging
-  this.app.use(datadog.middleware());
+  this.app.use(metrics.expressMiddleware());
 
   // Healthcheck
   this.app.use('/healthcheck', healthcheck);
@@ -35,7 +45,7 @@ util.inherits(PublicApp, App);
 
 
 // Setup dependencies
-di.annotate(PublicApp, new di.Inject(Config, Logger, Passport, PublicRoutes, Healthcheck, Datadog));
+di.annotate(PublicApp, new di.Inject(Config, Logger, Passport, PublicRoutes, Healthcheck, Metrics));
 
 
 // Export our service

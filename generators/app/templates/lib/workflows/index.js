@@ -13,6 +13,7 @@ function Workflows(logger, deciders, activities) {
   this.activities = activities;
 }
 
+
 Workflows.prototype.start = function start() {
 
   // Start the activities
@@ -24,6 +25,7 @@ Workflows.prototype.start = function start() {
   this.logger.log('info', 'Workflow application started');
 
 };
+
 
 Workflows.prototype.stop = function stop() {
   // Stop activity polling

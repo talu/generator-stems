@@ -6,7 +6,7 @@ var
 
 var Service, dataImporter;
 
-before(function (done) {
+before(function () {
   var injector = fixtures.Service.injector;
 
   if (!injector) {
@@ -16,9 +16,6 @@ before(function (done) {
 
   Service = fixtures._runtime = injector.get(fixtures.Service);
   dataImporter = fixtures._runtime.dataImporter = injector.get(fixtures.DataImporter);
-
-  // Wait for mongoose connection
-  Service.start(done);
 });
 
 beforeEach(function (done) {
@@ -27,8 +24,4 @@ beforeEach(function (done) {
 
 beforeEach(function (done) {
   dataImporter.load(fixtures.data, done);
-});
-
-after(function () {
-  Service.stop();
 });
